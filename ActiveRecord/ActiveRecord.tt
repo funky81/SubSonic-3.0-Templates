@@ -339,7 +339,12 @@ namespace <#=Namespace #>
             
 #>
         #endregion
-        
+
+
+        public IEnumerable<IColumn> GetPrimaryKeys()
+        {
+            return tbl.Columns.Where(x=>x.IsPrimaryKey);
+        }        
 
 <#
             foreach(Column col in tbl.Columns)
