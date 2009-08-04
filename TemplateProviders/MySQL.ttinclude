@@ -108,6 +108,7 @@ List<Table> LoadTables(){
                 /* Pass the information whether Data Type Unsigned or Not **/
                 if (row["COLUMN_TYPE"].ToString().Contains("unsigned"))
                 {
+                    col.IsUnsigned = true;
                     col.DbType=GetDbType(col.DataType+" unsigned");    
                     col.SysType=GetSysType(col.DataType+" unsigned");
                 }
@@ -119,7 +120,7 @@ List<Table> LoadTables(){
                 col.AutoIncrement=row["EXTRA"].ToString()=="auto_increment";
                 col.IsNullable=row["IS_NULLABLE"].ToString()=="YES";
                 col.IsPK=row["COLUMN_KEY"].ToString()=="PRI";
-                
+
                 if(col.IsPK){
                     item.PrimaryKey=col.Name ?? "";
                 }
@@ -175,7 +176,7 @@ string GetSysType(string sqlType){
 		case "real":
 		case "numeric":
 		case "smallmoney":
-		case "decimal unsigned":
+        case "decimal unsigned":
 		case "decimal":
 		case "money":
 			sysType=  "decimal";
@@ -228,6 +229,7 @@ DbType GetDbType(string sqlType){
             return DbType.Boolean;
         case "char":
             return DbType.AnsiStringFixedLength;
+        case "decimal unsigned":
         case "decimal":
             return DbType.Decimal;
         case "float":

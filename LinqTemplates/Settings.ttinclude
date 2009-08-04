@@ -41,8 +41,8 @@
     	
 	    return result;
     }
-	
-	    private string GeneratedNamespace() {
+    
+    private string GeneratedNamespace() {
         // You can tweak the return value here to dynamically alter the generated namespace.
         // This would be useful if, e.g., you want to generate both ActiveRecord and Linq
         // code using a shared Settings.ttinclude.
@@ -211,6 +211,7 @@
         public int MaxLength;
         public bool IsNullable;
         public bool IsForeignKey;
+        public bool IsUnsigned;
     }
     public class FKTable{
         public string ThisTable;

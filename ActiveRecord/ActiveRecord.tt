@@ -361,6 +361,15 @@ namespace <#=GeneratedNamespace() #>
             get { return _<#=col.CleanName #>; }
             set
             {
+<#
+			if(col.IsUnsigned && col.DbType == DbType.Decimal) {
+#>
+                if(value < 0M) {
+				    throw new ArgumentOutOfRangeException("<#=col.CleanName #>", value, "Cannot assign negative value to unsigned decimal");
+				}
+<#
+			}
+#>
                 if(_<#=col.CleanName #>!=value){
                     _<#=col.CleanName #>=value;
                     var col=tbl.Columns.SingleOrDefault(x=>x.Name=="<#=col.Name #>");

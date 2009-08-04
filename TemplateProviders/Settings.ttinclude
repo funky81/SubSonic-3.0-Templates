@@ -211,6 +211,7 @@
         public int MaxLength;
         public bool IsNullable;
         public bool IsForeignKey;
+        public bool IsUnsigned;
     }
     public class FKTable{
         public string ThisTable;

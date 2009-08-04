@@ -46,6 +46,15 @@ namespace <#=GeneratedNamespace()#>
 		        return _<#=col.CleanName#>;
 		    } 
 		    set{
+<#
+			if(col.IsUnsigned && col.DbType == DbType.Decimal) {
+#>
+                if(value < 0M) {
+				    throw new ArgumentOutOfRangeException("<#=col.CleanName #>", value, "Cannot assign negative value to unsigned decimal");
+				}
+<#
+			}
+#>
 		        this.On<#=col.CleanName#>Changing(value);
                 this.SendPropertyChanging();
                 this._<#=col.CleanName#> = value;
