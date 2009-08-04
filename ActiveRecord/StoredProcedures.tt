@@ -11,7 +11,7 @@ using SubSonic.Schema;
 using SubSonic.DataProviders;
 using System.Data;
 
-namespace <#=Namespace#>{
+namespace <#=GeneratedNamespace()#>{
 	public partial class <#=DatabaseName#>DB{
 
 <#  foreach(var sp in sps){#>

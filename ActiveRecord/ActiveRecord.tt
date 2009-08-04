@@ -14,7 +14,7 @@ using SubSonic.Repository;
 using System.ComponentModel;
 using System.Data.Common;
 
-namespace <#=Namespace #>
+namespace <#=GeneratedNamespace() #>
 {
 <#
 
@@ -39,7 +39,7 @@ namespace <#=Namespace #>
 
         
         static void SetTestRepo(){
-            _testRepo = _testRepo ?? new TestRepository<<#=tbl.ClassName#>>(new <#=Namespace#>.<#=DatabaseName#>DB());
+            _testRepo = _testRepo ?? new TestRepository<<#=tbl.ClassName#>>(new <#=GeneratedNamespace()#>.<#=DatabaseName#>DB());
         }
         public static void ResetTestRepo(){
             _testRepo = null;
@@ -96,10 +96,10 @@ namespace <#=Namespace #>
             return _dirtyColumns;
         }
 
-        <#=Namespace#>.<#=DatabaseName#>DB _db;
+        <#=GeneratedNamespace()#>.<#=DatabaseName#>DB _db;
         public <#=tbl.ClassName#>(string connectionString, string providerName) {
 
-            _db=new <#=Namespace#>.<#=DatabaseName#>DB(connectionString, providerName);
+            _db=new <#=GeneratedNamespace()#>.<#=DatabaseName#>DB(connectionString, providerName);
             Init();            
          }
         void Init(){
@@ -118,7 +118,7 @@ namespace <#=Namespace #>
         }
         
         public <#=tbl.ClassName#>(){
-             _db=new <#=Namespace#>.<#=DatabaseName#>DB();
+             _db=new <#=GeneratedNamespace()#>.<#=DatabaseName#>DB();
             Init();            
         }
         
@@ -145,11 +145,11 @@ namespace <#=Namespace #>
        
         
         internal static IRepository<<#=tbl.ClassName#>> GetRepo(string connectionString, string providerName){
-            <#=Namespace#>.<#=DatabaseName#>DB db;
+            <#=GeneratedNamespace()#>.<#=DatabaseName#>DB db;
             if(String.IsNullOrEmpty(connectionString)){
-                db=new <#=Namespace#>.<#=DatabaseName#>DB();
+                db=new <#=GeneratedNamespace()#>.<#=DatabaseName#>DB();
             }else{
-                db=new <#=Namespace#>.<#=DatabaseName#>DB(connectionString, providerName);
+                db=new <#=GeneratedNamespace()#>.<#=DatabaseName#>DB(connectionString, providerName);
             }
             IRepository<<#=tbl.ClassName#>> _repo;
             
@@ -326,7 +326,7 @@ namespace <#=Namespace #>
             get
             {
                 
-                  var repo=<#=Namespace #>.<#=fk.OtherClass#>.GetRepo();
+                  var repo=<#=GeneratedNamespace() #>.<#=fk.OtherClass#>.GetRepo();
                   return from items in repo.GetAll()
                        where items.<#=CleanUp(fk.OtherColumn)#> == _<#=CleanUp(fk.ThisColumn)#>
                        select items;

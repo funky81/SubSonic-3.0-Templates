@@ -16,7 +16,7 @@ using SubSonic.Schema;
 using System.Data.Common;
 using System.Collections.Generic;
 
-namespace <#=Namespace#>
+namespace <#=GeneratedNamespace()#>
 {
     public partial class <#=DatabaseName#>DB : IQuerySurface
     {

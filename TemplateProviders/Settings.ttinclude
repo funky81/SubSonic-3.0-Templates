@@ -41,6 +41,17 @@
     	
 	    return result;
     }
+    
+    private string GeneratedNamespace() {
+        // You can tweak the return value here to dynamically alter the generated namespace.
+        // This would be useful if, e.g., you want to generate both ActiveRecord and Linq
+        // code using a shared Settings.ttinclude.
+        
+        // You can use Host.TemplateFile to refer to the pathname of the template
+        // currently being processed, and branch based on that.
+        return Namespace;
+    }
+
     string CheckNullable(Column col){
         string result="";
         if(col.IsNullable && col.SysType !="byte[]" && col.SysType !="string")

@@ -8,7 +8,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 
-namespace <#=Namespace#>
+namespace <#=GeneratedNamespace()#>
 {
     
     
@@ -79,7 +79,7 @@ namespace <#=Namespace#>
         {
             get
             {
-                  var db=new <#=Namespace #>.<#=DatabaseName#>DB();
+                  var db=new <#=GeneratedNamespace() #>.<#=DatabaseName#>DB();
                   return from items in db.<#=fk.OtherQueryable #>
                        where items.<#=fk.OtherColumn#> == _<#=fk.ThisColumn#>
                        select items;

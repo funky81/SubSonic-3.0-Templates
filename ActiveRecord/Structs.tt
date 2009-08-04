@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using SubSonic.DataProviders;
 using System.Data;
 
-namespace <#=Namespace#> {
+namespace <#=GeneratedNamespace()#> {
 	
 <#  foreach(var tbl in tables){
         if(!ExcludeTables.Contains(tbl.Name))
