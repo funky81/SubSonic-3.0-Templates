@@ -90,7 +90,7 @@ namespace <#=GeneratedNamespace()#>
             {
                   var db=new <#=GeneratedNamespace() #>.<#=DatabaseName#>DB();
                   return from items in db.<#=fk.OtherQueryable #>
-                       where items.<#=fk.OtherColumn#> == _<#=fk.ThisColumn#>
+                       where items.<#=CleanUp(fk.OtherColumn)#> == _<#=CleanUp(fk.ThisColumn)#>
                        select items;
             }
         }
