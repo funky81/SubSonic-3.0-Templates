@@ -119,7 +119,7 @@ List<Table> LoadTables(){
             tbl.Schema=rdr["TABLE_SCHEMA"].ToString();
             tbl.Columns=LoadColumns(tbl);
             tbl.PrimaryKey=GetPK(tbl.Name);
-            tbl.CleanName=CleanUp(tbl.Name);
+            tbl.CleanName=CleanUpTableName(tbl.Name);
             tbl.ClassName=Inflector.MakeSingular(tbl.CleanName);
             tbl.QueryableName=Inflector.MakePlural(tbl.ClassName);
             
@@ -154,7 +154,7 @@ List<Column> LoadColumns(Table tbl){
         while(rdr.Read()){
             Column col=new Column();
             col.Name=rdr["ColumnName"].ToString();
-            col.CleanName=CleanUp(col.Name);
+            col.CleanName=CleanUpColumnName(col.Name);
             col.DataType=rdr["DataType"].ToString();
             col.SysType=GetSysType(col.DataType);
             col.DbType=GetDbType(col.DataType);

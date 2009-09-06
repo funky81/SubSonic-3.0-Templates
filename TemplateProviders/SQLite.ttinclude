@@ -53,7 +53,7 @@ List<Table> LoadTables(){
                 Table tbl = new Table();
                 tbl.PrimaryKey=""; 
                 tbl.Name = row["TABLE_NAME"].ToString();                
-                tbl.CleanName=CleanUp(tbl.Name);
+                tbl.CleanName=CleanUpTableName(tbl.Name);
                 tbl.ClassName=Inflector.MakeSingular(tbl.CleanName);
                 
                 /** Added support for FK **/
@@ -74,7 +74,7 @@ List<Table> LoadTables(){
                 Column col=new Column();
                 col.Name=row["COLUMN_NAME"].ToString();
                 //col.Name=row["COLUMN_NAME"].ToString()+"_"+row["DATA_TYPE"].ToString();
-                col.CleanName=CleanUp(col.Name);
+                col.CleanName=CleanUpColumnName(col.Name);
                 col.DataType=row["DATA_TYPE"].ToString();
                 
                 col.SysType=GetSysType(col.DataType);
