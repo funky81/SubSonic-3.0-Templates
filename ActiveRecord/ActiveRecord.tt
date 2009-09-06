@@ -340,6 +340,10 @@ namespace <#=GeneratedNamespace() #>
 #>
         #endregion
 
+        public IEnumerable<IColumn> GetPrimaryKeys()
+        {
+            return tbl.Columns.Where(x=>x.IsPrimaryKey);
+        }
 
         public IEnumerable<IColumn> GetPrimaryKeys()
         {
